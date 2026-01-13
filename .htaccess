@@ -3,4 +3,5 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.+) - [PT,L]
  
-RewriteRule ^(.*)$ index.php?do=$1 [QSA,L]
+RewriteRule ^(.*)$ index.html?do=$1 [QSA,L]
+
