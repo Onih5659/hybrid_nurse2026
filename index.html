@@ -49,6 +49,9 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="kegiatan.html">Kegiatan</a>
             </li>
             <li class="nav-item">
@@ -112,6 +115,40 @@
         <span class="carousel-control-next-icon"></span>
       </button>
     </div>
+
+    <!--Countdown-->
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4 class="mb-0 text-center">Countdown Timer</h4>
+            </div>
+            <div class="card-body">
+              <div class="row text-center">
+                <div class="col-3">
+                  <h3 id="days" class="display-4">00</h3>
+                  <p>Days</p>
+                </div>
+                <div class="col-3">
+                  <h3 id="hours" class="display-4">00</h3>
+                  <p>Hours</p>
+                </div>
+                <div class="col-3">
+                  <h3 id="minutes" class="display-4">00</h3>
+                  <p>Minutes</p>
+                </div>
+                <div class="col-3">
+                  <h3 id="seconds" class="display-4">00</h3>
+                  <p>Seconds</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--Teks-->
     <div
       class="fModule text-center f-half-welcome-message container-function bg-light pb-3 wow fadeInRight f-module f-module-pages-custom animated"
@@ -148,7 +185,36 @@
       </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
+    <script>
+      // Set tanggal tujuan
+      const targetDate = new Date("Jan 18, 2026 23:59:59").getTime();
 
+      // Update hitungan setiap 1 detik
+      const timer = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        // Perhitungan waktu
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Tampilkan hasil
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        // Jika waktu habis
+        if (distance < 0) {
+          clearInterval(timer);
+          document.getElementById("countdown").innerHTML = "WAKTU HABIS";
+        }
+      }, 1000);
+    </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
